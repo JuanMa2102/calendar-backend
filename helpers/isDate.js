@@ -1,12 +1,13 @@
-const { moment } = require("moment");
-const isDate = ( value, {req, location, path} ) =>{
-
-    if( !value ) return false
-    
-    const date = moment(value);
-    if( date.isValid() ) return true
-    return false
-
-}
-
-module.exports = {isDate};
+const { isValid, getTime } = require('date-fns');
+ 
+const isDate = (dateValue) => {
+    if (!dateValue) return false;
+ 
+    const getMiliseconds = getTime(dateValue);
+ 
+    const date = isValid(getMiliseconds);
+ 
+    return date;
+};
+ 
+module.exports = { isDate };

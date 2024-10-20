@@ -15,7 +15,6 @@ router.use(validarJWT);
 router.get('/',getEvents);
 router.post('/',
     [
-        check('id', 'No es un ID válido').isMongoId(),
         check('title', 'El título es obligatorio').not().isEmpty(),
         check('start', 'La fecha de inicio es obligatoria').custom( isDate ),
         check('end', 'La fecha de finalización es obligatoria').custom( isDate ),
